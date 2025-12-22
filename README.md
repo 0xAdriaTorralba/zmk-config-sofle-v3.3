@@ -63,8 +63,3 @@ To regenerate the diagram, use *keymap-drawer* with:
 
 - `keymap_drawer.config.yaml`
 - `keymap-drawer/eyelash_sofle.yaml` (or re-parse from the `.keymap`)
-
-## Legacy
-
-The folder `zmk-config-sofle-v3.2/` contains an older configuration kept for reference/migration.
-
