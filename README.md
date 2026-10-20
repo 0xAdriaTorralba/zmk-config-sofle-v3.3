@@ -19,6 +19,25 @@ Personal ZMK configuration for the **Eyelash Sofle** split keyboard.
 - **Pointing/mouse keys**: enabled (`CONFIG_ZMK_POINTING=y`) and used in the keymap.
 - **Soft-Off combo**: press **Q + S + Z** and hold **2s** to enter deep sleep (wake via reset button).
 
+## ACC and SYM layers (Spanish ISO on macOS)
+
+- **ACC (layer 6)**: tap an Alt thumb, then one key. Holding the thumb is still Alt.
+  - Acute: `A` á, `E` é, `I` í, `O` ó, `U` ú
+  - Grave and diaeresis: `Z` à, `D` è, `L` ò, `8` ï, `7` ü
+  - Other: `C` ç, `N` ñ, `.` l·l, `/` ¿, `1` ¡
+  - Capitals: hold Shift first, then tap Alt, then the letter.
+  - Any other key types normally and closes ACC.
+- **SYM (`lower`, layer 1)**: hold the left inner thumb (`cmd_space`). Home-row mods don't apply inside SYM.
+
+  ```
+  ! @ # $ %     ^ & * ~ `
+  \ | = + -     < ( ) > "
+  € · _ / ?     { [ ] } '
+  ```
+
+  `^`, `~` and `` ` `` type literally (no dead key).
+- **Dead keys on base**: the key right of `P` is `` ` `` and the key right of `L` is `´`, as on a Spanish keyboard.
+
 ## Build firmware (GitHub Actions)
 
 This repo is compatible with ZMK’s standard *user config* workflow. The `build.yaml` file defines what gets built:
