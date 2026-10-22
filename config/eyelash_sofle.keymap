@@ -205,6 +205,8 @@
         softoff {
             bindings = <&soft_off>;
             key-positions = <14 28 40>;
+            // ADJUST only (SYM + RAISE held): on base, the combo held back every S (a home-row mod) press
+            layers = <3>;
         };
     };
 

@@ -17,7 +17,7 @@ Personal ZMK configuration for the **Eyelash Sofle** split keyboard.
 
 - **ZMK Studio (left half)**: enabled in `build.yaml` via the `studio-rpc-usb-uart` snippet + CMake args.
 - **Pointing/mouse keys**: enabled (`CONFIG_ZMK_POINTING=y`) and used in the keymap.
-- **Soft-Off combo**: press **Q + S + Z** and hold **2s** to enter deep sleep (wake via reset button).
+- **Soft-Off combo**: on ADJUST (hold the SYM and RAISE thumbs), press **Q + S + Z** and hold **2s** to enter deep sleep (wake via reset button). The combo only exists on ADJUST so it never delays `S`, a home-row mod, on the base layer.
 
 ## SYM layer, accents and home-row mods (Spanish ISO on macOS)
 
