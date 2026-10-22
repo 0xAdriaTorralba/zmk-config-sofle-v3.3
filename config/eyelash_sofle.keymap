@@ -15,13 +15,6 @@
 &mmv_input_listener { input-processors = <&zip_xy_scaler 2 1>; };
 &msc_input_listener { input-processors = <&zip_scroll_scaler 2 1>; };
 
-&mt {
-    tapping-term-ms = <200>;
-    flavor = "tap-preferred";
-    retro-tap;
-    require-prior-idle-ms = <200>;
-};
-
 &msc {
     acceleration-exponent = <1>;
     time-to-max-speed-ms = <400>;
@@ -66,18 +59,6 @@
             #binding-cells = <2>;
             tapping-term-ms = <150>;
             hold-trigger-key-positions = <0>;
-        };
-
-        cmd_t: cmd_t {
-            compatible = "zmk,behavior-hold-tap";
-            label = "CMD_T";
-            bindings = <&kp>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-            hold-trigger-key-positions = <18>;
-            quick-tap-ms = <50>;
         };
 
         c_trencada: c_trencada {
@@ -126,24 +107,28 @@
             tapping-term-ms = <200>;
         };
 
-        alt_space: alt_space {
-            compatible = "zmk,behavior-tap-dance";
-            label = "ALT_SPACE";
-            #binding-cells = <0>;
-            bindings = <&mo 2>, <&kp LA(SPACE)>;
-
-            tapping-term-ms = <200>;
-        };
-
+        // Home-row mods: "timeless" settings (zmk.dev hold-tap docs).
+        // Before tapping-term, a mod only triggers with a key on the other half or a thumb.
+        // A key pressed within 150 ms of the previous one is always a tap (~70 WPM).
         lhmod: lhmod {
             compatible = "zmk,behavior-hold-tap";
             label = "LHMOD";
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-            quick-tap-ms = <50>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-on-release;
+            // right half + thumbs
+            hold-trigger-key-positions = <
+                7 8 9 10 11 12
+                20 21 22 23 24 25
+                33 34 35 36 37 38
+                46 47 48 49 50 51
+                52 53 54 55 56 57 58 59 60 61 62 63
+            >;
         };
 
         rhmod: rhmod {
@@ -152,121 +137,20 @@
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-            quick-tap-ms = <50>;
-        };
-
-        ctrl_q: ctrl_q {
-            compatible = "zmk,behavior-tap-dance";
-            label = "CTRL_Q";
-            #binding-cells = <0>;
-            bindings = <&kp LEFT_GUI>, <&kp LC(Q)>;
-
-            tapping-term-ms = <200>;
-        };
-
-        // Alt thumbs: hold = Alt, tap = ACC layer (6) for the next key
-        alt_acc: alt_acc {
-            compatible = "zmk,behavior-hold-tap";
-            label = "ALT_ACC";
-            bindings = <&kp>, <&sl>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "hold-preferred";
-        };
-
-        // Accented vowels for ACC. With Shift held, the morph drops Shift for the
-        // dead key (so ´ stays ´, not ¨) and the letter adds it back: Á, not ¨A.
-        a_acute: a_acute {
-            compatible = "zmk,behavior-mod-morph";
-            label = "A_ACUTE";
-            #binding-cells = <0>;
-            bindings = <&acute A>, <&acute LS(A)>;
-
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        e_acute: e_acute {
-            compatible = "zmk,behavior-mod-morph";
-            label = "E_ACUTE";
-            #binding-cells = <0>;
-            bindings = <&acute E>, <&acute LS(E)>;
-
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        i_acute: i_acute {
-            compatible = "zmk,behavior-mod-morph";
-            label = "I_ACUTE";
-            #binding-cells = <0>;
-            bindings = <&acute I>, <&acute LS(I)>;
-
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        o_acute: o_acute {
-            compatible = "zmk,behavior-mod-morph";
-            label = "O_ACUTE";
-            #binding-cells = <0>;
-            bindings = <&acute O>, <&acute LS(O)>;
-
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        u_acute: u_acute {
-            compatible = "zmk,behavior-mod-morph";
-            label = "U_ACUTE";
-            #binding-cells = <0>;
-            bindings = <&acute U>, <&acute LS(U)>;
-
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        a_grave: a_grave {
-            compatible = "zmk,behavior-mod-morph";
-            label = "A_GRAVE";
-            #binding-cells = <0>;
-            bindings = <&grave A>, <&grave LS(A)>;
-
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        e_grave: e_grave {
-            compatible = "zmk,behavior-mod-morph";
-            label = "E_GRAVE";
-            #binding-cells = <0>;
-            bindings = <&grave E>, <&grave LS(E)>;
-
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        o_grave: o_grave {
-            compatible = "zmk,behavior-mod-morph";
-            label = "O_GRAVE";
-            #binding-cells = <0>;
-            bindings = <&grave O>, <&grave LS(O)>;
-
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        i_diaer: i_diaer {
-            compatible = "zmk,behavior-mod-morph";
-            label = "I_DIAER";
-            #binding-cells = <0>;
-            bindings = <&diaer I>, <&diaer LS(I)>;
-
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        u_diaer: u_diaer {
-            compatible = "zmk,behavior-mod-morph";
-            label = "U_DIAER";
-            #binding-cells = <0>;
-            bindings = <&diaer U>, <&diaer LS(U)>;
-
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            hold-trigger-on-release;
+            // left half + joystick column + thumbs
+            hold-trigger-key-positions = <
+                0 1 2 3 4 5
+                13 14 15 16 17 18
+                26 27 28 29 30 31
+                39 40 41 42 43 44
+                6 19 32 45
+                52 53 54 55 56 57 58 59 60 61 62 63
+            >;
         };
     };
 
@@ -292,28 +176,6 @@
             label = "PREVIOUS_PAGE";
         };
 
-        // Spanish ISO dead keys: tap the dead key, then the letter passed as the parameter
-        acute: acute {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&kp SQT &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
-            label = "ACUTE";
-        };
-
-        grave: grave {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&kp LBKT &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
-            label = "GRAVE";
-        };
-
-        diaer: diaer {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&kp LS(SQT) &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
-            label = "DIAER";
-        };
-
         // Literal ^ ~ ` for SYM: the dead key, then SPACE
         caret: caret {
             compatible = "zmk,behavior-macro";
@@ -335,14 +197,6 @@
             bindings = <&kp LBKT &kp SPACE>;
             label = "GRAVE_LIT";
         };
-
-        // l·l (Catalan ela geminada)
-        ela_geminada: ela_geminada {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp L &kp LS(N3) &kp L>;
-            label = "ELA_GEMINADA";
-        };
     };
 
     combos {
@@ -360,10 +214,10 @@
         default_layer {
             bindings = <
 &service_mode LS(LA(APOSTROPHE)) GRAVE  &kp N1               &kp N2          &kp N3                   &kp N4             &kp N5                &kp UP_ARROW     &kp N6             &kp N7              &kp N8              &kp N9          &generic_tap_hold LS(MINUS) MINUS            &generic_tap_hold EQUAL N0
-&num_tab 4 TAB                          &kp Q                &kp W           &kp E                    &kp R              &cmd_t LG(T) T        &kp DOWN_ARROW   &rhmod LEFT_GUI Y  &rhmod RIGHT_GUI U  &rhmod RIGHT_ALT I  &rhmod RCTRL O  &rhmod RIGHT_SHIFT P                         &kp LBKT
-&kp CAPS                                &lhmod LEFT_SHIFT A  &lhmod LCTRL S  &lhmod LEFT_ALT D        &lhmod LEFT_GUI F  &lhmod RIGHT_GUI G    &kp LEFT_ARROW   &kp H              &kp J               &kp K               &kp L           &kp SINGLE_QUOTE                             &kp ENTER
+&num_tab 4 TAB                          &kp Q                &kp W           &kp E                    &kp R              &kp T                 &kp DOWN_ARROW   &kp Y              &rhmod RIGHT_GUI U  &rhmod RIGHT_ALT I  &rhmod RCTRL O  &rhmod RIGHT_SHIFT P                         &kp LBKT
+&kp CAPS                                &lhmod LEFT_SHIFT A  &lhmod LCTRL S  &lhmod LEFT_ALT D        &lhmod LEFT_GUI F  &kp G                 &kp LEFT_ARROW   &kp H              &kp J               &kp K               &kp L           &kp SINGLE_QUOTE                             &kp ENTER
 &kp LSHFT                               &kp Z                &kp X           &c_trencada BACKSLASH C  &kp V              &kp B                 &kp RIGHT_ARROW  &enya SEMICOLON N  &kp M               &kp COMMA           &kp DOT         &kp FSLH                                     &kp RSHFT
-&kp C_MUTE                              &kp LCTRL            &alt_acc LALT 6 &kp LEFT_GUI             &kp BSPC           &cmd_space            &kp ENTER        &alt_space         &kp SPACE           &kp RGUI            &alt_acc RALT 6 &kp RCTRL
+&kp C_MUTE                              &kp LCTRL            &kp LALT        &kp LEFT_GUI             &kp BSPC           &cmd_space            &kp ENTER        &mo 2              &kp SPACE           &kp RGUI            &kp RALT        &kp RCTRL
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
@@ -373,9 +227,9 @@
         lower_layer {
             bindings = <
 &kp ESCAPE  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5    &mmv MOVE_UP     &kp F6             &kp F7                &kp F8                 &kp F9                &kp F10              &trans
-&trans      &kp LS(N1)     &kp RA(N2)     &kp RA(N3)     &kp LS(N4)     &kp LS(N5)     &mmv MOVE_DOWN   &caret               &kp LS(N6)           &kp LS(RBKT)         &tilde               &grave_lit           &trans
-&trans      &kp RA(GRAVE)  &kp RA(N1)     &kp LS(N0)     &kp RBKT       &kp FSLH       &mmv MOVE_LEFT   &kp NON_US_BSLH      &kp LS(N8)           &kp LS(N9)           &kp LS(NON_US_BSLH)  &kp LS(N2)           &trans
-&trans      &kp RA(E)      &kp LS(N3)     &kp LS(FSLH)   &kp LS(N7)     &kp LS(MINUS)  &mmv MOVE_RIGHT  &kp RA(SQT)          &kp RA(LBKT)         &kp RA(RBKT)         &kp RA(BSLH)         &kp MINUS            &trans
+&trans      &kp LS(N1)           &kp RA(N2)           &kp RA(N3)           &kp LS(N4)           &kp LS(N5)           &mmv MOVE_DOWN   &kp RA(GRAVE)  &kp RA(SQT)    &kp RA(BSLH)   &kp LS(MINUS)  &kp RBKT       &trans
+&trans      &trans               &kp RA(N1)           &kp LS(N0)           &kp LS(N6)           &kp MINUS            &mmv MOVE_LEFT   &kp LS(N7)     &kp LS(N8)     &kp LS(N9)     &grave_lit     &kp LS(N2)     &trans
+&trans      &kp NON_US_BSLH      &kp LS(NON_US_BSLH)  &kp LS(FSLH)         &caret               &kp LS(RBKT)         &mmv MOVE_RIGHT  &tilde         &kp RA(LBKT)   &kp RA(RBKT)   &kp LS(N3)     &kp FSLH       &trans
 &kp C_MUTE  &trans  &trans  &trans  &trans  &trans    &mkp LCLK        &trans             &trans                &trans                 &trans                &trans
             >;
 
@@ -430,21 +284,10 @@
 &kp TAB     &kp Q      &kp W     &kp E                    &kp R     &kp T         &kp DOWN_ARROW   &kp Y              &kp U      &kp I      &kp O     &kp P                              &kp RBKT
 &kp ESCAPE  &kp A      &kp S     &kp D                    &kp F     &kp G         &kp LEFT_ARROW   &kp H              &kp J      &kp K      &kp L     &kp BACKSLASH                      &kp ENTER
 &kp LSHFT   &kp Z      &kp X     &c_trencada BACKSLASH C  &kp V     &kp B         &kp RIGHT_ARROW  &enya SEMICOLON N  &kp M      &kp COMMA  &kp DOT   &kp FSLH                           &kp RSHFT
-&kp C_MUTE  &kp LCTRL  &kp LALT  &kp LGUI                 &kp BSPC  &cmd_space    &to 0            &alt_space         &kp SPACE  &kp RGUI   &kp RALT  &kp RCTRL
+&kp C_MUTE  &kp LCTRL  &kp LALT  &kp LGUI                 &kp BSPC  &cmd_space    &to 0            &mo 2              &kp SPACE  &kp RGUI   &kp RALT  &kp RCTRL
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
-        };
-
-        acc_layer {
-            display-name = "acc";
-            bindings = <
-&trans      &kp EQUAL   &trans      &trans      &trans      &trans      &trans   &trans          &u_diaer        &i_diaer        &trans          &trans          &trans
-&trans      &trans      &trans      &e_acute    &trans      &trans      &trans   &trans          &u_acute        &i_acute        &o_acute        &trans          &trans
-&trans      &a_acute    &trans      &e_grave    &trans      &trans      &trans   &trans          &trans          &trans          &o_grave        &trans          &trans
-&trans      &a_grave    &trans      &kp BSLH    &trans      &trans      &trans   &kp SEMI        &trans          &trans          &ela_geminada   &kp LS(EQUAL)   &trans
-&trans      &trans      &trans      &trans      &trans      &trans      &trans   &trans          &trans          &trans          &trans          &trans
-            >;
         };
     };
 

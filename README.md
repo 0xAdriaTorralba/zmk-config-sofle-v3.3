@@ -19,24 +19,23 @@ Personal ZMK configuration for the **Eyelash Sofle** split keyboard.
 - **Pointing/mouse keys**: enabled (`CONFIG_ZMK_POINTING=y`) and used in the keymap.
 - **Soft-Off combo**: press **Q + S + Z** and hold **2s** to enter deep sleep (wake via reset button).
 
-## ACC and SYM layers (Spanish ISO on macOS)
+## SYM layer, accents and home-row mods (Spanish ISO on macOS)
 
-- **ACC (layer 6)**: tap an Alt thumb, then one key. Holding the thumb is still Alt.
-  - Acute: `A` á, `E` é, `I` í, `O` ó, `U` ú
-  - Grave and diaeresis: `Z` à, `D` è, `L` ò, `8` ï, `7` ü
-  - Other: `C` ç, `N` ñ, `.` l·l, `/` ¿, `1` ¡
-  - Capitals: hold Shift first, then tap Alt, then the letter.
-  - Any other key types normally and closes ACC.
-- **SYM (`lower`, layer 1)**: hold the left inner thumb (`cmd_space`). Home-row mods don't apply inside SYM.
+- **SYM (`lower`, layer 1)**: hold the left inner thumb (`cmd_space`). `A` stays transparent (⇧), so holding it still gives Shift.
 
   ```
-  ! @ # $ %     ^ & * ~ `
-  \ | = + -     < ( ) > "
-  € · _ / ?     { [ ] } '
+  ! @ # $ %     \ { } ? +
+  ⇧ | = & '     / ( ) ` "
+  < > _ ^ *     ~ [ ] · -
   ```
 
   `^`, `~` and `` ` `` type literally (no dead key).
-- **Dead keys on base**: the key right of `P` is `` ` `` and the key right of `L` is `´`, as on a Spanish keyboard.
+- **Accents**: dead keys at their Spanish positions. The key right of `P` is `` ` `` (Shift: `^`) and the key right of `L` is `´` (Shift: `¨`). For example, `´` then `e` = é, Shift+`´` then `u` = ü. Hold `N` for ñ and `C` for ç.
+- **Home-row mods** (`A S D F` = ⇧ ⌃ ⌥ ⌘, `U I O P` = ⌘ ⌥ ⌃ ⇧): balanced hold-tap, 280 ms tapping term, 175 ms quick-tap, 150 ms prior-idle, positional with hold-trigger-on-release.
+  - Before 280 ms, a mod only triggers with a key on the other half or a thumb, so same-hand rolls stay letters. For same-hand shortcuts, use the thumb ⌘ or the other hand's mod.
+  - A key pressed within 150 ms of the previous key always types its letter.
+  - Tap, then hold again within 175 ms, to auto-repeat the letter.
+  - `G`, `Y` and `T` are plain letters.
 
 ## Build firmware (GitHub Actions)
 
