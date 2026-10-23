@@ -31,11 +31,7 @@ Personal ZMK configuration for the **Eyelash Sofle** split keyboard.
 
   `^`, `~` and `` ` `` type literally (no dead key).
 - **Accents**: dead keys at their Spanish positions. The key right of `P` is `` ` `` (Shift: `^`) and the key right of `L` is `´` (Shift: `¨`). For example, `´` then `e` = é, Shift+`´` then `u` = ü. Hold `N` for ñ and `C` for ç.
-- **Home-row mods** (`A S D F` = ⇧ ⌃ ⌥ ⌘, `U I O P` = ⌘ ⌥ ⌃ ⇧): balanced hold-tap, 280 ms tapping term, 175 ms quick-tap, 150 ms prior-idle, positional with hold-trigger-on-release.
-  - Before 280 ms, a mod only triggers with a key on the other half or a thumb, so same-hand rolls stay letters. For same-hand shortcuts, use the thumb ⌘ or the other hand's mod.
-  - A key pressed within 150 ms of the previous key always types its letter.
-  - Tap, then hold again within 175 ms, to auto-repeat the letter.
-  - `G`, `Y` and `T` are plain letters.
+- **Home-row mods**: hold `A S D F` for ⇧ ⌃ ⌥ ⌘ and `U I O P` for ⌘ ⌥ ⌃ ⇧. `G`, `Y` and `T` are plain letters.
 
 ## Build firmware (GitHub Actions)
 
