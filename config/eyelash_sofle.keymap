@@ -41,19 +41,16 @@
     behaviors {
         num_tab: num_tab {
             compatible = "zmk,behavior-hold-tap";
-            label = "NUM_TAB";
             bindings = <&mo>, <&kp>;
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             quick-tap-ms = <100>;
             require-prior-idle-ms = <100>;
-            hold-trigger-key-positions = <13>;
         };
 
         service_mode: service_mode {
             compatible = "zmk,behavior-hold-tap";
-            label = "SERVICE_MODE";
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
@@ -63,7 +60,6 @@
 
         c_trencada: c_trencada {
             compatible = "zmk,behavior-hold-tap";
-            label = "C_TRENCADA";
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
@@ -75,7 +71,6 @@
 
         enya: enya {
             compatible = "zmk,behavior-hold-tap";
-            label = "ENYA";
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
@@ -87,7 +82,6 @@
 
         generic_tap_hold: generic_tap_hold {
             compatible = "zmk,behavior-hold-tap";
-            label = "GENERIC_TAP_HOLD";
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
@@ -100,7 +94,6 @@
 
         cmd_space: cmd_space {
             compatible = "zmk,behavior-tap-dance";
-            label = "CMD_SPACE";
             #binding-cells = <0>;
             bindings = <&mo 1>, <&kp LG(SPACE)>;
 
@@ -109,7 +102,6 @@
 
         lhmod: lhmod {
             compatible = "zmk,behavior-hold-tap";
-            label = "LHMOD";
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
@@ -120,7 +112,6 @@
 
         rhmod: rhmod {
             compatible = "zmk,behavior-hold-tap";
-            label = "RHMOD";
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
@@ -135,21 +126,18 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LA(LC(LG(EQUAL)))>;
-            label = "SLEEP";
         };
 
         next_page: next_page {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LG(SINGLE_QUOTE)>;
-            label = "NEXT_PAGE";
         };
 
         previous_page: previous_page {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LG(SEMICOLON)>;
-            label = "PREVIOUS_PAGE";
         };
 
         // Literal ^ ~ ` for SYM: the dead key, then SPACE
@@ -157,21 +145,18 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LS(LBKT) &kp SPACE>;
-            label = "CARET";
         };
 
         tilde: tilde {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp RA(SEMI) &kp SPACE>;
-            label = "TILDE";
         };
 
         grave_lit: grave_lit {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LBKT &kp SPACE>;
-            label = "GRAVE_LIT";
         };
     };
 
@@ -218,10 +203,10 @@
         raise_layer {
             display-name = "raise";
             bindings = <
-&kp GRAVE   &kp F1  &kp F2  &kp F3  &kp F4      &kp F5    &kp K         &kp F6          &kp F7          &kp F8        &kp F9      &kp F10  &kp F11
-&trans      &trans  &trans  &trans  &trans      &trans    &kp J         &kp LC(Q)       &kp LC(W)       &kp HOME      &kp HOME    &trans   &kp F12
-&trans      &trans  &trans  &trans  &trans      &trans    &kp UP_ARROW  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW   &trans   &trans
-&trans      &trans  &trans  &trans  &trans      &trans    &kp DOWN_ARROW      &previous_page  &kp PG_DN   &kp PG_UP   &next_page  &trans   &trans
+&kp GRAVE   &kp F1  &kp F2  &kp F3  &kp F4      &kp F5    &kp UP_ARROW  &kp F6          &kp F7          &kp F8        &kp F9      &kp F10  &kp F11
+&trans      &trans  &trans  &trans  &trans      &trans    &kp DOWN_ARROW  &trans        &trans          &kp HOME      &kp END     &trans   &kp F12
+&trans      &trans  &trans  &trans  &trans      &trans    &kp LEFT_ARROW  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW   &trans   &trans
+&trans      &trans  &trans  &trans  &trans      &trans    &kp RIGHT_ARROW     &previous_page  &kp PG_DN   &kp PG_UP   &next_page  &trans   &trans
 &kp C_MUTE  &trans  &trans  &trans  &kp DELETE  &trans    &kp ESC       &trans          &trans          &trans        &trans      &trans
             >;
 
@@ -233,7 +218,7 @@
             bindings = <
 &kp GRAVE   &kp F1  &kp F2           &kp F3           &kp F4           &kp F5             &mmv MOVE_UP     &kp F6           &kp F7      &kp F8    &kp F9      &kp F10  &kp F11
 &trans      &trans  &trans           &trans           &trans           &trans             &mmv MOVE_DOWN   &trans           &trans      &trans    &trans      &trans   &trans
-&studio_unlock      &trans  &trans           &trans           &trans           &to 5              &mmv MOVE_LEFT   &kp PG_DN        &trans      &trans    &trans      &trans   &trans
+&trans      &trans  &trans           &trans           &trans           &to 5              &mmv MOVE_LEFT   &kp PG_DN        &trans      &trans    &trans      &trans   &trans
 &trans      &trans  &rgb_ug RGB_EFF  &rgb_ug RGB_TOG  &rgb_ug RGB_BRD  &rgb_ug RGB_BRI    &mmv MOVE_RIGHT  &rgb_ug RGB_BRI  &kp C_PREV  &kp C_PP  &kp C_NEXT  &kp F12  &trans
 &kp C_MUTE  &trans  &trans           &trans           &trans           &trans             &mkp LCLK        &trans           &trans      &trans    &trans      &trans
             >;
@@ -252,7 +237,6 @@
             >;
 
             sensor-bindings = <&scroll_encoder>;
-            label = "num";
         };
 
         game_layer {
@@ -261,7 +245,7 @@
 &kp GRAVE   &kp N1     &kp N2    &kp N3                   &kp N4    &kp N5        &kp UP_ARROW     &kp N6             &kp N7     &kp N8     &kp N9    &generic_tap_hold LS(MINUS) MINUS  &generic_tap_hold EQUAL N0
 &kp TAB     &kp Q      &kp W     &kp E                    &kp R     &kp T         &kp DOWN_ARROW   &kp Y              &kp U      &kp I      &kp O     &kp P                              &kp RBKT
 &kp ESCAPE  &kp A      &kp S     &kp D                    &kp F     &kp G         &kp LEFT_ARROW   &kp H              &kp J      &kp K      &kp L     &kp BACKSLASH                      &kp ENTER
-&kp LSHFT   &kp Z      &kp X     &c_trencada BACKSLASH C  &kp V     &kp B         &kp RIGHT_ARROW  &enya SEMICOLON N  &kp M      &kp COMMA  &kp DOT   &kp FSLH                           &kp RSHFT
+&kp LSHFT   &kp Z      &kp X     &kp C                    &kp V     &kp B         &kp RIGHT_ARROW  &kp N              &kp M      &kp COMMA  &kp DOT   &kp FSLH                           &kp RSHFT
 &kp C_MUTE  &kp LCTRL  &kp LALT  &kp LGUI                 &kp BSPC  &cmd_space    &to 0            &mo 2              &kp SPACE  &kp RGUI   &kp RALT  &kp RCTRL
             >;
 
