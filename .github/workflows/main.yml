@@ -2,21 +2,23 @@ name: Build ZMK firmware
 on:
   workflow_dispatch:
   push:
-    paths:
-      - "config/**"
+    # Build on every change except the drawings, so [Draw] commits do not retrigger
+    paths-ignore:
+      - "keymap-drawer/**"
 
 jobs:
   build:
-    # Pinned to the ZMK revision in config/west.yml (see build.yml)
+    # Pinned to the ZMK revision in config/west.yml. The @main workflow's board-compat
+    # step needs Zephyr 4.1 and fails on v0.3.0 (KeyError: 'qualifiers').
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3.0
   draw:
-    uses: caksoylar/keymap-drawer/.github/workflows/draw-zmk.yml@main
+    uses: caksoylar/keymap-drawer/.github/workflows/draw-zmk.yml@v0.23.0
     permissions:
       contents: write
     with:
       commit_message: "[Draw] ${{ github.event.head_commit.message }}"
       amend_commit: false
-      install_branch: "main"
+      install_version: "0.23.0"
       keymap_patterns: "config/*.keymap"
       json_path: "config"
       config_path: "keymap_drawer.config.yaml" # config file, ignored if not exists

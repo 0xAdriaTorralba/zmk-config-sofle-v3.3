@@ -14,7 +14,8 @@ manifest:
    #    revision: main 
     - name: eyelash_sofle
       url: https://github.com/a741725193/zmk-sofle
-      revision: main
+      # pinned to upstream main as of 2026-07-23 (cad1477)
+      revision: cad147725279b0635a3d512ac99f6668bfec3704
     - name: zmk
       remote: zmkfirmware
       revision: v0.3.0
