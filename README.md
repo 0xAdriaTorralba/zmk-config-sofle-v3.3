@@ -19,7 +19,7 @@ Personal ZMK configuration for the **Eyelash Sofle** split keyboard.
 - **Pointing/mouse keys**: enabled (`CONFIG_ZMK_POINTING=y`) and used in the keymap.
 - **Soft-Off combo**: on ADJUST (hold the SYM and RAISE thumbs), press **Q + S + Z** and hold **2s** to enter deep sleep (wake via reset button). The combo only exists on ADJUST so it never delays `S`, a home-row mod, on the base layer.
 - **Idle sleep**: each half enters deep sleep after **15 min** without a keypress on that half (each half counts only its own keys). The backlight stays on until then.
-- **Displays**: both halves use the `nice_view_sofle` shield in `boards/shields/nice_view_sofle/`, a vendored copy of [nice-view-gem](https://github.com/M165437/nice-view-gem) `v0.3.0`; each half shows its own battery as `BAT xx%`.
+- **Displays**: both halves use the `nice_view_sofle` shield in `boards/shields/nice_view_sofle/`, customised from [nice-view-gem](https://github.com/M165437/nice-view-gem) `v0.3.0`. Each half shows its own battery as an icon plus `xx%`; the left (central) screen shows the selected Bluetooth profile number in large type (or `USB`) and the active layer, with no WPM widget.
 
 ## SYM layer, accents and home-row mods (Spanish ISO on macOS)
 
