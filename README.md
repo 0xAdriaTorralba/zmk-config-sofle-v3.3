@@ -18,6 +18,8 @@ Personal ZMK configuration for the **Eyelash Sofle** split keyboard.
 - **ZMK Studio (left half)**: enabled in `build.yaml` via the `studio-rpc-usb-uart` snippet + CMake args.
 - **Pointing/mouse keys**: enabled (`CONFIG_ZMK_POINTING=y`) and used in the keymap.
 - **Soft-Off combo**: on ADJUST (hold the SYM and RAISE thumbs), press **Q + S + Z** and hold **2s** to enter deep sleep (wake via reset button). The combo only exists on ADJUST so it never delays `S`, a home-row mod, on the base layer.
+- **Idle sleep**: each half enters deep sleep after **15 min** without a keypress on that half (each half counts only its own keys). The backlight stays on until then.
+- **Displays**: both halves use [nice-view-gem](https://github.com/M165437/nice-view-gem) `v0.3.0`; each half shows its own battery as `BAT xx%`.
 
 ## SYM layer, accents and home-row mods (Spanish ISO on macOS)
 
@@ -37,8 +39,8 @@ Personal ZMK configuration for the **Eyelash Sofle** split keyboard.
 
 This repo is compatible with ZMK’s standard *user config* workflow. The `build.yaml` file defines what gets built:
 
-- `eyelash_sofle_right` + `nice_view`
-- `eyelash_sofle_left` + `nice_view` (+ ZMK Studio variant for left)
+- `eyelash_sofle_right` + `nice_view_gem`
+- `eyelash_sofle_left` + `nice_view_gem` (+ ZMK Studio variant for left)
 - `nice_nano_v2` + `settings_reset`
 
 If you already have a workflow configured, pushing changes to this repo should produce updated `.uf2` artifacts.
@@ -53,10 +55,10 @@ west update
 west zephyr-export
 
 # Right half
-west build -s zmk/app -d build/right -b eyelash_sofle_right -- -DSHIELD=nice_view
+west build -s zmk/app -d build/right -b eyelash_sofle_right -- -DSHIELD=nice_view_gem
 
 # Left half
-west build -s zmk/app -d build/left -b eyelash_sofle_left -- -DSHIELD=nice_view
+west build -s zmk/app -d build/left -b eyelash_sofle_left -- -DSHIELD=nice_view_gem
 ```
 
 ## Update the keymap
