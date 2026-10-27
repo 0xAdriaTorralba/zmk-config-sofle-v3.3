@@ -9,7 +9,7 @@ static void draw_profile_number(lv_obj_t *canvas, const struct status_state *sta
     lv_draw_label_dsc_t label_dsc;
     init_label_dsc(&label_dsc, LVGL_FOREGROUND, &lv_font_montserrat_48, LV_TEXT_ALIGN_CENTER);
 
-    char text[4] = {};
+    char text[12] = {};
 
     snprintf(text, sizeof(text), "%d", state->active_profile_index + 1);
     lv_canvas_draw_text(canvas, 0, PROFILE_NUMBER_Y, BUFFER_SIZE, &label_dsc, text);
