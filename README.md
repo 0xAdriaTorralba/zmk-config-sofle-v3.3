@@ -32,7 +32,7 @@ Personal ZMK configuration for the **Eyelash Sofle** split keyboard.
   ```
 
   `^`, `~` and `` ` `` type literally (no dead key).
-- **Accents**: dead keys at their Spanish positions. The key right of `P` is `` ` `` (Shift: `^`) and the key right of `L` is `´` (Shift: `¨`). For example, `´` then `e` = é, Shift+`´` then `u` = ü. Hold `N` for ñ and `C` for ç.
+- **Accents**: dead keys at their Spanish positions. The key right of `P` types `` ` `` on tap (Shift: `^`) and `+` when held. The key right of `L` is `´` (Shift: `¨`). For example, `´` then `e` = é, Shift+`´` then `u` = ü. Hold `N` for ñ and `C` for ç.
 - **Home-row mods**: hold `A S D F` for ⇧ ⌃ ⌥ ⌘ and `U I O P` for ⌘ ⌥ ⌃ ⇧. `G`, `Y` and `T` are plain letters.
 
 ## Build firmware (GitHub Actions)

@@ -154,6 +154,10 @@ parse_config:
       tap: "0"
       shifted: "="
       hold: "¡"
+    "&generic_tap_hold RBKT LBKT":
+      tap: "`"
+      shifted: "^"
+      hold: "+"
     # Spanish/Catalan letters on hold
     "&c_trencada BACKSLASH C":
       tap: C
