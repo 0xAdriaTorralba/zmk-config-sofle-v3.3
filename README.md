@@ -26,9 +26,9 @@ Personal ZMK configuration for the **Eyelash Sofle** split keyboard.
 - **SYM (`lower`, layer 1)**: hold the left inner thumb (`cmd_space`). `A` stays transparent (⇧), so holding it still gives Shift.
 
   ```
-  ! @ # $ %     \ { } ? +
-  ⇧ | = & '     / ( ) ` "
-  < > _ ^ *     ~ [ ] · -
+  ! @ # $ %     \ ( ) ? +
+  ⇧ | = & '     / [ ] ` "
+  < > _ ^ *     ~ { } · -
   ```
 
   `^`, `~` and `` ` `` type literally (no dead key).

@@ -190,9 +190,9 @@
         lower_layer {
             bindings = <
 &kp ESCAPE  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5    &mmv MOVE_UP     &kp F6             &kp F7                &kp F8                 &kp F9                &kp F10              &trans
-&trans      &kp LS(N1)           &kp RA(N2)           &kp RA(N3)           &kp LS(N4)           &kp LS(N5)           &mmv MOVE_DOWN   &kp RA(GRAVE)  &kp RA(SQT)    &kp RA(BSLH)   &kp LS(MINUS)  &kp RBKT       &trans
-&trans      &trans               &kp RA(N1)           &kp LS(N0)           &kp LS(N6)           &kp MINUS            &mmv MOVE_LEFT   &kp LS(N7)     &kp LS(N8)     &kp LS(N9)     &grave_lit     &kp LS(N2)     &trans
-&trans      &kp NON_US_BSLH      &kp LS(NON_US_BSLH)  &kp LS(FSLH)         &caret               &kp LS(RBKT)         &mmv MOVE_RIGHT  &tilde         &kp RA(LBKT)   &kp RA(RBKT)   &kp LS(N3)     &kp FSLH       &trans
+&trans      &kp LS(N1)           &kp RA(N2)           &kp RA(N3)           &kp LS(N4)           &kp LS(N5)           &mmv MOVE_DOWN   &kp RA(GRAVE)  &kp LS(N8)     &kp LS(N9)     &kp LS(MINUS)  &kp RBKT       &trans
+&trans      &trans               &kp RA(N1)           &kp LS(N0)           &kp LS(N6)           &kp MINUS            &mmv MOVE_LEFT   &kp LS(N7)     &kp RA(LBKT)   &kp RA(RBKT)   &grave_lit     &kp LS(N2)     &trans
+&trans      &kp NON_US_BSLH      &kp LS(NON_US_BSLH)  &kp LS(FSLH)         &caret               &kp LS(RBKT)         &mmv MOVE_RIGHT  &tilde         &kp RA(SQT)    &kp RA(BSLH)   &kp LS(N3)     &kp FSLH       &trans
 &kp C_MUTE  &trans  &trans  &trans  &trans  &trans    &mkp LCLK        &trans             &trans                &trans                 &trans                &trans
             >;
 
